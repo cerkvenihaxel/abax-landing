@@ -1,68 +1,93 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+import Link from 'next/link'
 import { 
-  ClipboardDocumentCheckIcon, 
-  UserGroupIcon, 
-  ShoppingCartIcon,
+  CheckCircleIcon,
+  ArrowRightIcon,
+  ShieldCheckIcon,
+  UserGroupIcon,
   ChartBarIcon,
-  DocumentTextIcon,
+  BuildingOfficeIcon,
+  BeakerIcon,
+  ClipboardDocumentCheckIcon,
   PresentationChartLineIcon,
-  CheckCircleIcon
+  WrenchScrewdriverIcon,
+  DocumentTextIcon,
+  AcademicCapIcon,
+  TruckIcon,
+  ComputerDesktopIcon
 } from '@heroicons/react/24/outline'
 
 const services = [
   {
     title: 'Auditoría de Prestaciones',
-    description: 'Revisión exhaustiva de prestaciones médicas para optimizar costos y calidad.',
+    description: 'Evaluación exhaustiva de servicios médicos para optimizar recursos y mejorar la calidad de atención.',
     icon: ClipboardDocumentCheckIcon,
     features: [
-      'Auditoría de facturación',
-      'Control de prestaciones',
-      'Análisis de costos',
-      'Optimización de recursos'
+      'Análisis detallado de procesos',
+      'Identificación de áreas de mejora',
+      'Recomendaciones personalizadas',
+      'Seguimiento de implementación'
     ]
   },
   {
     title: 'Outsourcing Profesional',
-    description: 'Servicios de gestión administrativa y operativa para instituciones de salud.',
+    description: 'Gestión integral de recursos humanos especializados para instituciones de salud.',
     icon: UserGroupIcon,
     features: [
-      'Gestión de personal',
-      'Administración de convenios',
-      'Control de stock',
-      'Optimización de procesos'
+      'Selección de personal calificado',
+      'Capacitación continua',
+      'Gestión de nómina',
+      'Cumplimiento normativo'
     ]
   },
   {
     title: 'Suministro de Insumos',
-    description: 'Provisión de insumos médicos y equipamiento de alta calidad.',
-    icon: ShoppingCartIcon,
+    description: 'Provisión de materiales médicos y equipamiento de alta calidad para instituciones de salud.',
+    icon: TruckIcon,
     features: [
-      'Insumos médicos',
-      'Equipamiento',
+      'Catálogo completo de insumos',
+      'Entrega oportuna',
       'Control de inventario',
-      'Logística especializada'
+      'Soporte técnico'
     ]
   }
 ]
 
 const additionalServices = [
   {
-    title: 'Análisis de Datos',
-    description: 'Utilizamos Business Intelligence e Inteligencia Artificial para detectar desvíos y oportunidades de mejora.',
-    icon: ChartBarIcon
+    title: 'Consultoría en Gestión',
+    description: 'Asesoramiento especializado para optimizar la administración de instituciones de salud.',
+    icon: ChartBarIcon,
+    features: [
+      'Análisis organizacional',
+      'Planificación estratégica',
+      'Optimización de procesos',
+      'Mejora continua'
+    ]
   },
   {
-    title: 'Consultoría Especializada',
-    description: 'Asesoramiento experto en gestión y optimización de recursos sanitarios.',
-    icon: DocumentTextIcon
+    title: 'Capacitación',
+    description: 'Programas de formación para profesionales de la salud y personal administrativo.',
+    icon: AcademicCapIcon,
+    features: [
+      'Cursos especializados',
+      'Talleres prácticos',
+      'Certificaciones',
+      'Seguimiento de aprendizaje'
+    ]
   },
   {
-    title: 'Reportes y Métricas',
-    description: 'Informes detallados y métricas de rendimiento para la toma de decisiones.',
-    icon: PresentationChartLineIcon
+    title: 'Desarrollo Tecnológico',
+    description: 'Implementación de soluciones tecnológicas para la gestión eficiente de instituciones de salud.',
+    icon: ComputerDesktopIcon,
+    features: [
+      'Sistemas de gestión',
+      'Automatización de procesos',
+      'Integración de plataformas',
+      'Soporte técnico'
+    ]
   }
 ]
 
@@ -96,7 +121,7 @@ export default function Services() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl text-white/90 max-w-3xl mx-auto"
             >
-              Ofrecemos servicios especializados para optimizar la gestión y el rendimiento de las instituciones de salud.
+              Ofrecemos servicios especializados para optimizar la gestión y operación de instituciones de salud.
             </motion.p>
           </div>
         </div>
@@ -106,8 +131,16 @@ export default function Services() {
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Servicios Principales</h2>
-            <p className="text-xl text-gray-600">Soluciones diseñadas para optimizar la gestión de la salud</p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium mb-4"
+            >
+              Servicios Principales
+            </motion.div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Nuestras Soluciones</h2>
+            <p className="text-xl text-gray-600">Servicios diseñados para optimizar la gestión de la salud</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -115,7 +148,7 @@ export default function Services() {
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-white rounded-xl p-8 shadow-lg border border-gray-100"
               >
@@ -125,11 +158,17 @@ export default function Services() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">{service.title}</h3>
                 <p className="text-gray-600 mb-6">{service.description}</p>
                 <ul className="space-y-3">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center text-gray-600">
-                      <CheckCircleIcon className="w-5 h-5 text-blue-600 mr-2" />
+                  {service.features.map((feature, featureIndex) => (
+                    <motion.li
+                      key={featureIndex}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 + featureIndex * 0.1 }}
+                      className="flex items-center text-gray-600"
+                    >
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3" />
                       {feature}
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
               </motion.div>
@@ -144,14 +183,14 @@ export default function Services() {
           <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium mb-4"
             >
               Servicios Adicionales
             </motion.div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Complementamos tu Gestión</h2>
-            <p className="text-xl text-gray-600">Herramientas y servicios adicionales para potenciar tu organización</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Más Soluciones</h2>
+            <p className="text-xl text-gray-600">Complementamos nuestros servicios principales con soluciones especializadas</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -159,15 +198,29 @@ export default function Services() {
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-8 shadow-lg"
+                className="bg-white rounded-xl p-8 shadow-lg border border-gray-100"
               >
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
                   <service.icon className="w-6 h-6 text-blue-600" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
+                <p className="text-gray-600 mb-6">{service.description}</p>
+                <ul className="space-y-3">
+                  {service.features.map((feature, featureIndex) => (
+                    <motion.li
+                      key={featureIndex}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 + featureIndex * 0.1 }}
+                      className="flex items-center text-gray-600"
+                    >
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3" />
+                      {feature}
+                    </motion.li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>
@@ -180,7 +233,7 @@ export default function Services() {
           <div className="text-center">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="text-3xl font-bold text-white mb-6"
             >
@@ -188,23 +241,32 @@ export default function Services() {
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-xl text-white/90 mb-8 max-w-3xl mx-auto"
             >
-              Contáctanos para conocer cómo podemos ayudarte a mejorar la eficiencia de tu organización.
+              Descubre cómo nuestros servicios pueden transformar tu organización de salud.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex flex-col sm:flex-row justify-center gap-4"
             >
-              <a
+              <Link
                 href="/contacto"
-                className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+                className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
               >
                 Contactar Ahora
-              </a>
+                <ArrowRightIcon className="w-5 h-5 ml-2" />
+              </Link>
+              <Link
+                href="/nosotros"
+                className="inline-flex items-center justify-center bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-400 transition-colors"
+              >
+                Conocer Más
+                <ArrowRightIcon className="w-5 h-5 ml-2" />
+              </Link>
             </motion.div>
           </div>
         </div>

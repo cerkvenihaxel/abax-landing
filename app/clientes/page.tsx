@@ -2,12 +2,13 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import { 
   BuildingOfficeIcon,
   UserGroupIcon,
   StarIcon,
   ChartBarIcon,
-  HeartIcon,
+  ArrowRightIcon,
   ShieldCheckIcon
 } from '@heroicons/react/24/outline'
 
@@ -15,25 +16,22 @@ const testimonials = [
   {
     name: 'Dr. Juan Pérez',
     role: 'Director Médico',
-    company: 'Hospital Central',
-    image: '/testimonials/testimonial1.jpg',
-    quote: 'ABAX ha transformado nuestra gestión hospitalaria, optimizando recursos y mejorando la calidad de atención.',
+    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop',
+    quote: 'ABAX ha transformado nuestra gestión hospitalaria con soluciones innovadoras y eficientes.',
     rating: 5
   },
   {
     name: 'Dra. María García',
     role: 'Gerente de Operaciones',
-    company: 'Clínica Privada',
-    image: '/testimonials/testimonial2.jpg',
-    quote: 'Su enfoque en la eficiencia y la calidad nos ha permitido mejorar significativamente nuestros procesos.',
+    image: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop',
+    quote: 'Su enfoque en la calidad y la eficiencia ha mejorado significativamente nuestros procesos.',
     rating: 5
   },
   {
     name: 'Lic. Carlos Rodríguez',
     role: 'Director Administrativo',
-    company: 'Centro Médico Integral',
-    image: '/testimonials/testimonial3.jpg',
-    quote: 'La implementación de sus soluciones ha sido clave para nuestro crecimiento y desarrollo.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
+    quote: 'La implementación de sus soluciones ha optimizado nuestros recursos y mejorado la atención al paciente.',
     rating: 5
   }
 ]
@@ -48,7 +46,7 @@ const stats = [
   {
     title: 'Profesionales Satisfechos',
     value: '1000+',
-    description: 'Especialistas que utilizan nuestros servicios',
+    description: 'Usuarios que utilizan nuestras soluciones',
     icon: UserGroupIcon
   },
   {
@@ -73,11 +71,11 @@ const services = [
   {
     title: 'Consultoría Especializada',
     description: 'Asesoramiento experto para el desarrollo de instituciones de salud.',
-    icon: HeartIcon
+    icon: ShieldCheckIcon
   }
 ]
 
-export default function Clients() {
+export default function Clientes() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -107,7 +105,7 @@ export default function Clients() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl text-white/90 max-w-3xl mx-auto"
             >
-              Trabajamos con las principales instituciones de salud para transformar la gestión sanitaria.
+              Trabajamos con organizaciones líderes para transformar la gestión de la salud.
             </motion.p>
           </div>
         </div>
@@ -121,9 +119,9 @@ export default function Clients() {
               <motion.div
                 key={stat.title}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-8 shadow-lg border border-gray-100 text-center"
+                className="bg-white rounded-xl p-8 shadow-lg text-center border border-gray-100"
               >
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-6">
                   <stat.icon className="w-6 h-6 text-blue-600" />
@@ -143,13 +141,13 @@ export default function Clients() {
           <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium mb-4"
             >
               Testimonios
             </motion.div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Lo que dicen nuestros clientes</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Lo que Dicen Nuestros Clientes</h2>
             <p className="text-xl text-gray-600">Experiencias de instituciones que han transformado su gestión con nosotros</p>
           </div>
 
@@ -158,9 +156,9 @@ export default function Clients() {
               <motion.div
                 key={testimonial.name}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-8 shadow-lg"
+                className="bg-white rounded-xl p-8 shadow-lg border border-gray-100"
               >
                 <div className="flex items-center mb-6">
                   <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4">
@@ -173,8 +171,7 @@ export default function Clients() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900">{testimonial.name}</h3>
-                    <p className="text-gray-600">{testimonial.role}</p>
-                    <p className="text-blue-600">{testimonial.company}</p>
+                    <p className="text-blue-600">{testimonial.role}</p>
                   </div>
                 </div>
                 <p className="text-gray-600 mb-4">{testimonial.quote}</p>
@@ -202,7 +199,7 @@ export default function Clients() {
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-white rounded-xl p-8 shadow-lg border border-gray-100"
               >
@@ -223,7 +220,7 @@ export default function Clients() {
           <div className="text-center">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="text-3xl font-bold text-white mb-6"
             >
@@ -231,7 +228,7 @@ export default function Clients() {
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-xl text-white/90 mb-8 max-w-3xl mx-auto"
             >
@@ -239,15 +236,24 @@ export default function Clients() {
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex flex-col sm:flex-row justify-center gap-4"
             >
-              <a
+              <Link
                 href="/contacto"
-                className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+                className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
               >
                 Contactar Ahora
-              </a>
+                <ArrowRightIcon className="w-5 h-5 ml-2" />
+              </Link>
+              <Link
+                href="/servicios"
+                className="inline-flex items-center justify-center bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-400 transition-colors"
+              >
+                Ver Servicios
+                <ArrowRightIcon className="w-5 h-5 ml-2" />
+              </Link>
             </motion.div>
           </div>
         </div>

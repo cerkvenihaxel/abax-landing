@@ -2,103 +2,56 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import { 
-  BuildingOfficeIcon,
+  BuildingOfficeIcon, 
+  GlobeAltIcon, 
+  ArrowRightIcon,
   UserGroupIcon,
-  GlobeAltIcon,
-  ShieldCheckIcon,
   ChartBarIcon,
   HeartIcon
 } from '@heroicons/react/24/outline'
 
 const alliances = [
   {
-    title: 'Alianzas Estratégicas',
-    description: 'Colaboraciones con empresas líderes para potenciar nuestros servicios.',
-    icon: BuildingOfficeIcon,
-    partners: [
-      {
-        name: 'Empresa 1',
-        description: 'Especialista en tecnología médica',
-        logo: '/partners/partner1.png'
-      },
-      {
-        name: 'Empresa 2',
-        description: 'Líder en gestión hospitalaria',
-        logo: '/partners/partner2.png'
-      },
-      {
-        name: 'Empresa 3',
-        description: 'Innovación en salud digital',
-        logo: '/partners/partner3.png'
-      }
-    ]
+    name: 'Hospital San Juan',
+    description: 'Alianza estratégica para la optimización de procesos hospitalarios',
+    image: 'https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=400&h=300&fit=crop',
+    category: 'Hospital'
   },
   {
-    title: 'Red de Profesionales',
-    description: 'Red de expertos y consultores especializados en el sector salud.',
-    icon: UserGroupIcon,
-    partners: [
-      {
-        name: 'Dr. Juan Pérez',
-        description: 'Especialista en gestión hospitalaria',
-        logo: '/professionals/pro1.png'
-      },
-      {
-        name: 'Dra. María García',
-        description: 'Experta en auditoría médica',
-        logo: '/professionals/pro2.png'
-      },
-      {
-        name: 'Lic. Carlos Rodríguez',
-        description: 'Consultor en sistemas de salud',
-        logo: '/professionals/pro3.png'
-      }
-    ]
+    name: 'Clínica Santa María',
+    description: 'Colaboración en gestión de calidad y eficiencia operativa',
+    image: 'https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=400&h=300&fit=crop',
+    category: 'Clínica'
   },
   {
-    title: 'Alianzas Internacionales',
-    description: 'Colaboraciones con instituciones de salud a nivel global.',
-    icon: GlobeAltIcon,
-    partners: [
-      {
-        name: 'Institución Internacional 1',
-        description: 'Centro médico de referencia mundial',
-        logo: '/international/int1.png'
-      },
-      {
-        name: 'Institución Internacional 2',
-        description: 'Red de hospitales líder',
-        logo: '/international/int2.png'
-      },
-      {
-        name: 'Institución Internacional 3',
-        description: 'Organización de salud global',
-        logo: '/international/int3.png'
-      }
-    ]
+    name: 'Centro Médico ABC',
+    description: 'Alianza para la implementación de tecnologías médicas',
+    image: 'https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=400&h=300&fit=crop',
+    category: 'Centro Médico'
   }
 ]
 
 const benefits = [
   {
     title: 'Innovación Continua',
-    description: 'Acceso a las últimas tecnologías y metodologías en gestión de salud.',
+    description: 'Acceso a las últimas tecnologías y metodologías en gestión de salud',
     icon: ChartBarIcon
   },
   {
     title: 'Calidad Garantizada',
-    description: 'Estándares de calidad internacionales en todos nuestros servicios.',
-    icon: ShieldCheckIcon
+    description: 'Estándares de calidad internacionales en todos nuestros servicios',
+    icon: HeartIcon
   },
   {
     title: 'Compromiso Social',
-    description: 'Trabajamos por mejorar la salud y el bienestar de la comunidad.',
-    icon: HeartIcon
+    description: 'Impacto positivo en la comunidad y el sistema de salud',
+    icon: UserGroupIcon
   }
 ]
 
-export default function Alliances() {
+export default function Alianzas() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -128,7 +81,7 @@ export default function Alliances() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl text-white/90 max-w-3xl mx-auto"
             >
-              Trabajamos con los mejores para ofrecer soluciones integrales y de calidad.
+              Trabajamos con instituciones líderes para transformar la gestión de la salud.
             </motion.p>
           </div>
         </div>
@@ -138,44 +91,41 @@ export default function Alliances() {
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Nuestras Alianzas</h2>
-            <p className="text-xl text-gray-600">Colaboraciones estratégicas para potenciar nuestros servicios</p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium mb-4"
+            >
+              Nuestras Alianzas
+            </motion.div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Instituciones que Confían en Nosotros</h2>
+            <p className="text-xl text-gray-600">Colaboramos con organizaciones líderes en el sector de la salud</p>
           </div>
 
-          <div className="space-y-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {alliances.map((alliance, index) => (
               <motion.div
-                key={alliance.title}
+                key={alliance.name}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-8 shadow-lg border border-gray-100"
+                className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100"
               >
-                <div className="flex items-center mb-8">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                    <alliance.icon className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-semibold text-gray-900">{alliance.title}</h3>
-                    <p className="text-gray-600">{alliance.description}</p>
-                  </div>
+                <div className="relative h-48">
+                  <Image
+                    src={alliance.image}
+                    alt={alliance.name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {alliance.partners.map((partner) => (
-                    <div key={partner.name} className="text-center">
-                      <div className="relative w-32 h-32 mx-auto mb-4">
-                        <Image
-                          src={partner.logo}
-                          alt={partner.name}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                      <h4 className="text-lg font-semibold text-gray-900 mb-2">{partner.name}</h4>
-                      <p className="text-gray-600">{partner.description}</p>
-                    </div>
-                  ))}
+                <div className="p-6">
+                  <div className="inline-block bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-4">
+                    {alliance.category}
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{alliance.name}</h3>
+                  <p className="text-gray-600">{alliance.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -189,14 +139,14 @@ export default function Alliances() {
           <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium mb-4"
             >
               Beneficios
             </motion.div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">¿Por qué elegirnos?</h2>
-            <p className="text-xl text-gray-600">Ventajas de trabajar con nuestros aliados estratégicos</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">¿Por qué Aliarse con Nosotros?</h2>
+            <p className="text-xl text-gray-600">Ventajas competitivas para nuestros socios estratégicos</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -204,9 +154,9 @@ export default function Alliances() {
               <motion.div
                 key={benefit.title}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-8 shadow-lg"
+                className="bg-white rounded-xl p-8 shadow-lg border border-gray-100"
               >
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
                   <benefit.icon className="w-6 h-6 text-blue-600" />
@@ -225,31 +175,40 @@ export default function Alliances() {
           <div className="text-center">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="text-3xl font-bold text-white mb-6"
             >
-              ¿Quieres ser parte de nuestra red?
+              ¿Listo para ser nuestro aliado?
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-xl text-white/90 mb-8 max-w-3xl mx-auto"
             >
-              Únete a nuestra red de aliados estratégicos y juntos transformemos el futuro de la salud.
+              Únete a nuestra red de instituciones líderes en el sector de la salud.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex flex-col sm:flex-row justify-center gap-4"
             >
-              <a
+              <Link
                 href="/contacto"
-                className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+                className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
               >
                 Contactar Ahora
-              </a>
+                <ArrowRightIcon className="w-5 h-5 ml-2" />
+              </Link>
+              <Link
+                href="/servicios"
+                className="inline-flex items-center justify-center bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-400 transition-colors"
+              >
+                Ver Servicios
+                <ArrowRightIcon className="w-5 h-5 ml-2" />
+              </Link>
             </motion.div>
           </div>
         </div>

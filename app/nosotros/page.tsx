@@ -37,19 +37,19 @@ const team = [
   {
     name: 'Dr. Juan Pérez',
     role: 'Director Médico',
-    image: '/team/member1.jpg',
+    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop',
     description: 'Especialista en gestión hospitalaria con más de 15 años de experiencia.'
   },
   {
     name: 'Dra. María García',
     role: 'Directora de Operaciones',
-    image: '/team/member2.jpg',
+    image: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop',
     description: 'Experta en optimización de procesos y gestión de calidad.'
   },
   {
     name: 'Lic. Carlos Rodríguez',
     role: 'Director de Innovación',
-    image: '/team/member3.jpg',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
     description: 'Especialista en transformación digital y nuevas tecnologías.'
   }
 ]
@@ -140,7 +140,7 @@ export default function AboutUs() {
               className="relative h-[400px] rounded-xl overflow-hidden shadow-xl"
             >
               <Image
-                src="/about-hero.jpg"
+                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop"
                 alt="Equipo ABAX"
                 fill
                 className="object-cover"
