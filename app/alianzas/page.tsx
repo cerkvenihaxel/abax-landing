@@ -4,10 +4,9 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { 
-  BuildingOfficeIcon, 
-  GlobeAltIcon, 
   ArrowRightIcon,
   UserGroupIcon,
+  GlobeAltIcon,
   ChartBarIcon,
   HeartIcon
 } from '@heroicons/react/24/outline'

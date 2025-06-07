@@ -3,20 +3,13 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { 
-  CheckCircleIcon,
-  ArrowRightIcon,
-  ShieldCheckIcon,
-  UserGroupIcon,
+  ClipboardDocumentCheckIcon, 
+  UserGroupIcon, 
   ChartBarIcon,
-  BuildingOfficeIcon,
-  BeakerIcon,
-  ClipboardDocumentCheckIcon,
-  PresentationChartLineIcon,
-  WrenchScrewdriverIcon,
-  DocumentTextIcon,
   AcademicCapIcon,
   TruckIcon,
-  ComputerDesktopIcon
+  ComputerDesktopIcon,
+  ArrowRightIcon
 } from '@heroicons/react/24/outline'
 
 const services = [
