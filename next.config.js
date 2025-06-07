@@ -21,10 +21,10 @@ const nextConfig = {
         pathname: '/**',
       }
     ],
+    unoptimized: true
   },
   output: 'standalone',
-  reactStrictMode: true,
-  swcMinify: true,
+  reactStrictMode: true
 }
 
 module.exports = nextConfig 

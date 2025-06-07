@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { 
   ArrowRightIcon,
   UserGroupIcon,
-  GlobeAltIcon,
   ChartBarIcon,
   HeartIcon
 } from '@heroicons/react/24/outline'

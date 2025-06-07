@@ -10,8 +10,12 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'ABAX - Transformando la Gestión de la Salud',
-  description: 'Soluciones integrales para la gestión eficiente de instituciones de salud',
+  title: 'ABAX - Gestión de Salud',
+  description: 'Facilitamos el crecimiento y la gestión de las organizaciones de salud',
+  icons: {
+    icon: '/logo.svg',
+    apple: '/logo.svg',
+  },
 }
 
 export default function RootLayout({

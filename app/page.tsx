@@ -1,10 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
-import { CheckCircleIcon, ArrowRightIcon, ShieldCheckIcon, UserGroupIcon, ChartBarIcon, StarIcon } from '@heroicons/react/24/outline'
+import { CheckCircleIcon, ArrowRightIcon, ShieldCheckIcon, UserGroupIcon, ChartBarIcon } from '@heroicons/react/24/outline'
 
 export default function Home() {
   const videoRef = useRef<HTMLIFrameElement>(null)
