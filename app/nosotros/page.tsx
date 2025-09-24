@@ -3,14 +3,12 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { 
+import {
   ArrowRightIcon,
   ChartBarIcon,
   HeartIcon,
   ShieldCheckIcon,
-  LightBulbIcon,
-  BuildingOfficeIcon,
-  GlobeAltIcon
+  LightBulbIcon
 } from '@heroicons/react/24/outline'
 
 const values = [
@@ -54,22 +52,10 @@ const team = [
 
 const achievements = [
   {
-    title: 'Instituciones Atendidas',
-    value: '50+',
-    description: 'Organizaciones de salud que confían en nosotros',
-    icon: BuildingOfficeIcon
-  },
-  {
     title: 'Años de Experiencia',
-    value: '10+',
+    value: '+10',
     description: 'Trayectoria en el sector de la salud',
     icon: ChartBarIcon
-  },
-  {
-    title: 'Presencia Global',
-    value: '3',
-    description: 'Países con operaciones activas',
-    icon: GlobeAltIcon
   }
 ]
 

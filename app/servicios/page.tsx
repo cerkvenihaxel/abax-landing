@@ -2,26 +2,27 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { 
-  ClipboardDocumentCheckIcon, 
-  UserGroupIcon, 
+import {
+  ClipboardDocumentCheckIcon,
+  UserGroupIcon,
   ChartBarIcon,
   AcademicCapIcon,
   TruckIcon,
   ComputerDesktopIcon,
-  ArrowRightIcon
+  ArrowRightIcon,
+  ScalpelIcon
 } from '@heroicons/react/24/outline'
 
 const services = [
   {
-    title: 'Auditoría de Prestaciones',
-    description: 'Evaluación exhaustiva de servicios médicos para optimizar recursos y mejorar la calidad de atención.',
+    title: 'Auditoría Integral en Empresas financiadoras de Salud',
+    description: 'Mediante el análisis de la información de consumo brindada por la Institución y mediante usos de herramientas de Data Analytic y Business Intelligence pueden evaluarse desvíos para planificación de las siguientes clases de auditoría:',
     icon: ClipboardDocumentCheckIcon,
     features: [
-      'Análisis detallado de procesos',
-      'Identificación de áreas de mejora',
-      'Recomendaciones personalizadas',
-      'Seguimiento de implementación'
+      'Facturación médica y administrativa',
+      'Especializada en prótesis y ortesis (servicio de consultoría)',
+      'Medicación ambulatoria',
+      'Especializada en medicación ambulatoria de alto costo (servicio de consultoría)'
     ]
   },
   {
@@ -44,6 +45,18 @@ const services = [
       'Entrega oportuna',
       'Control de inventario',
       'Soporte técnico'
+    ]
+  },
+  {
+    title: 'Outsourcing de profesionales médicos quirúrgicos',
+    description: 'Ofrecimiento a entidades financiadoras de salud de posibilidad de resolución de patologías quirúrgicas en varias especialidades médicas con profesionales de alta calificación, ponderando valores competitivos de mercado. Soluciones quirúrgicas en las siguientes especialidades:',
+    icon: UserGroupIcon,
+    features: [
+      'Ginecología',
+      'Traumatología',
+      'Cirugía General',
+      'Cirugía Cardiovascular',
+      'Cirugía Vascular Periférica'
     ]
   }
 ]
@@ -136,7 +149,7 @@ export default function Services() {
             <p className="text-xl text-gray-600">Servicios diseñados para optimizar la gestión de la salud</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}

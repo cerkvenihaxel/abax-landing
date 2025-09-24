@@ -13,22 +13,22 @@ import Link from 'next/link'
 const contactInfo = [
   {
     title: 'Email',
-    description: 'contacto@abax.com.ar',
+    description: 'comercial@abaxheathservice.com',
     icon: EnvelopeIcon
   },
   {
     title: 'Teléfono',
-    description: '+54 11 1234-5678',
+    description: '+543516615020 / +543516184316',
     icon: PhoneIcon
   },
   {
     title: 'Dirección',
-    description: 'Av. Corrientes 1234, CABA, Argentina',
+    description: 'Martín de Jauregui N° 1795. Córdoba. Argentina.',
     icon: MapPinIcon
   },
   {
     title: 'Horario',
-    description: 'Lunes a Viernes de 9:00 a 18:00',
+    description: 'Lunes a Viernes de 9 a 18 hs.',
     icon: ClockIcon
   }
 ]
