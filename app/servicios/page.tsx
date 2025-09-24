@@ -9,8 +9,7 @@ import {
   AcademicCapIcon,
   TruckIcon,
   ComputerDesktopIcon,
-  ArrowRightIcon,
-  ScalpelIcon
+  ArrowRightIcon
 } from '@heroicons/react/24/outline'
 
 const services = [
