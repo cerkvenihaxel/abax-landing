@@ -52,21 +52,21 @@ export default function Home() {
             >
               Soluciones Integrales en Salud
             </motion.div>
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg leading-tight"
             >
-              Facilitamos el crecimiento y la gestión de las organizaciones de salud
+              ABAX Health Consulting: Facilitamos el crecimiento y la gestión de las organizaciones de salud
             </motion.h1>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto md:mx-0 drop-shadow-md"
             >
-              Somos profesionales con más de 15 años en el mercado de la salud, aportando valor para mejorar sustancialmente la gestión de recursos.
+              Somos profesionales con más de 10 años de experiencia en consultoría de salud, especializados en auditoría integral y outsourcing médico quirúrgico, aportando valor para mejorar sustancialmente la gestión de recursos en empresas financiadoras de salud.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -96,8 +96,8 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <div className="text-4xl font-bold text-blue-600 mb-2">15+</div>
-              <div className="text-gray-600">Años de experiencia</div>
+              <div className="text-4xl font-bold text-blue-600 mb-2">+10</div>
+              <div className="text-gray-600">Años de experiencia en consultoría de salud</div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -153,15 +153,15 @@ export default function Home() {
                 <ul className="space-y-3">
                   <li className="flex items-center text-gray-600">
                     <CheckCircleIcon className="w-5 h-5 text-blue-600 mr-2" />
-                    Auditoría médica y administrativa
+                    Auditoría integral en empresas financiadoras de salud
                   </li>
                   <li className="flex items-center text-gray-600">
                     <CheckCircleIcon className="w-5 h-5 text-blue-600 mr-2" />
-                    Venta de insumos médicos
+                    Outsourcing médico quirúrgico especializado
                   </li>
                   <li className="flex items-center text-gray-600">
                     <CheckCircleIcon className="w-5 h-5 text-blue-600 mr-2" />
-                    Outsourcing de equipos médicos
+                    Consultoría en gestión hospitalaria
                   </li>
                 </ul>
                 <Link href="/servicios" className="mt-6 inline-flex items-center text-blue-600 hover:text-blue-700">

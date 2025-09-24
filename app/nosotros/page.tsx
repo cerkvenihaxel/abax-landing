@@ -11,6 +11,7 @@ import {
   LightBulbIcon
 } from '@heroicons/react/24/outline'
 
+
 const values = [
   {
     title: 'Transparencia',
