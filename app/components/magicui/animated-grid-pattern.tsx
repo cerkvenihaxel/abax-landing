@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from "@/lib/utils"
-import { useEffect, useId, useRef, useState } from "react"
+import { useEffect, useId, useRef, useState, useCallback } from "react"
 
 interface GridPatternProps {
   width?: number
@@ -24,23 +24,16 @@ export default function AnimatedGridPattern({
   strokeDasharray = 0,
   numSquares = 50,
   className,
-  maxOpacity = 0.5,
   duration = 4,
   repeatDelay = 0.5,
   ...props
 }: GridPatternProps) {
   const id = useId()
   const containerRef = useRef<SVGSVGElement>(null)
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
   const [squares, setSquares] = useState<Array<{ id: number; pos: [number, number] }>>([])
   const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    setMounted(true)
-    setSquares(generateSquares(numSquares))
-  }, [numSquares])
-
-  function generateSquares(count: number) {
+  const generateSquares = useCallback((count: number) => {
     return Array.from({ length: count }, (_, i) => ({
       id: i,
       pos: [
@@ -48,19 +41,24 @@ export default function AnimatedGridPattern({
         Math.floor(Math.random() * 100),
       ] as [number, number],
     }))
-  }
+  }, [])
 
-  const updateSquares = () => {
+  useEffect(() => {
+    setMounted(true)
+    setSquares(generateSquares(numSquares))
+  }, [numSquares, generateSquares])
+
+  const updateSquares = useCallback(() => {
     if (mounted) {
       setSquares(generateSquares(numSquares))
     }
-  }
+  }, [mounted, numSquares, generateSquares])
 
   useEffect(() => {
     if (!mounted) return
     const interval = setInterval(updateSquares, (duration + repeatDelay) * 1000)
     return () => clearInterval(interval)
-  }, [duration, repeatDelay, numSquares, mounted])
+  }, [duration, repeatDelay, mounted, updateSquares])
 
   if (!mounted) {
     return (

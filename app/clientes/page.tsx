@@ -136,7 +136,7 @@ export default function ClientesPage() {
             {testimonials.map((testimonial, idx) => (
               <BlurFade key={idx} delay={0.2 + idx * 0.1} inView>
                 <div className="bg-alice-blue/30 rounded-xl p-8 border border-alice-blue">
-                  <p className="text-gray-700 mb-6 italic">"{testimonial.quote}"</p>
+                  <p className="text-gray-700 mb-6 italic">&ldquo;{testimonial.quote}&rdquo;</p>
                   <div>
                     <p className="font-semibold text-baltic-blue">{testimonial.author}</p>
                     <p className="text-sm text-gray-600">{testimonial.company}</p>
