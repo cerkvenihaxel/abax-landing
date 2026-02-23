@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   authors: [{ name: 'ABAX Health Service' }],
   creator: 'ABAX Health Service',
   publisher: 'ABAX Health Service',
+  icons: {
+    icon: '/assets/logo-abax.png',
+    shortcut: '/assets/logo-abax.png',
+    apple: '/assets/logo-abax.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'es_AR',
