@@ -36,61 +36,64 @@ export default function Navigation() {
   }
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b border-alice-blue">
-      <nav className="flex items-center justify-between p-4 lg:px-8 h-16" aria-label="Global">
-        <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
-            <Image
-              src="/assets/logo-abax.png"
-              alt="ABAX Health Service"
-              width={140}
-              height={50}
-              className="h-10 w-auto"
-            />
-          </Link>
-        </div>
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-            onClick={() => setMobileMenuOpen(true)}
-            aria-label="Abrir menú principal"
-          >
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-          </button>
-        </div>
-        <div className="hidden lg:flex lg:gap-x-8">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={`text-sm font-semibold leading-6 transition-colors ${
-                pathname === item.href
-                  ? 'text-baltic-blue'
-                  : 'text-gray-900 hover:text-baltic-blue'
-              }`}
-            >
-              {item.name}
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b border-alice-blue">
+        <nav className="flex items-center justify-between p-4 lg:px-8 h-16" aria-label="Global">
+          <div className="flex lg:flex-1">
+            <Link href="/" className="-m-1.5 p-1.5">
+              <Image
+                src="/assets/logo-abax.png"
+                alt="ABAX Health Service"
+                width={140}
+                height={50}
+                className="h-10 w-auto"
+              />
             </Link>
-          ))}
-        </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link
-            href="/contacto"
-            className="text-sm font-semibold leading-6 text-white bg-baltic-blue px-4 py-2 rounded-lg hover:bg-baltic-blue-2 transition-colors"
-          >
-            Contactar
-          </Link>
-        </div>
-      </nav>
+          </div>
+          <div className="flex lg:hidden">
+            <button
+              type="button"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label="Abrir menú principal"
+            >
+              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
+          <div className="hidden lg:flex lg:gap-x-8">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`text-sm font-semibold leading-6 transition-colors ${
+                  pathname === item.href
+                    ? 'text-baltic-blue'
+                    : 'text-gray-900 hover:text-baltic-blue'
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <Link
+              href="/contacto"
+              className="text-sm font-semibold leading-6 text-white bg-baltic-blue px-4 py-2 rounded-lg hover:bg-baltic-blue-2 transition-colors"
+            >
+              Contactar
+            </Link>
+          </div>
+        </nav>
+      </header>
+
       {mobileMenuOpen && (
-        <div className="lg:hidden">
+        <div className="lg:hidden fixed inset-0 z-[100]">
           <div 
-            className="fixed inset-0 bg-gray-900/80 z-40" 
+            className="fixed inset-0 bg-gray-900/80" 
             aria-hidden="true"
             onClick={() => setMobileMenuOpen(false)}
           />
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div className="fixed inset-y-0 right-0 z-[101] w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5">
                 <Image
@@ -142,6 +145,6 @@ export default function Navigation() {
           </div>
         </div>
       )}
-    </header>
+    </>
   )
 } 
