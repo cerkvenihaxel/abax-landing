@@ -1,190 +1,230 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import {
-  EnvelopeIcon,
-  PhoneIcon,
-  MapPinIcon,
-  ClockIcon,
-  ArrowRightIcon
-} from '@heroicons/react/24/outline'
-import Link from 'next/link'
+import { useState } from 'react'
+import { EnvelopeIcon, PhoneIcon, MapPinIcon } from '@heroicons/react/24/outline'
+import BlurFade from '../components/magicui/blur-fade'
+import HexagonPattern from '../components/HexagonPattern'
 
+export default function ContactoPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    message: '',
+  })
 
-const contactInfo = [
-  {
-    title: 'Email',
-    description: 'comercial@abaxheathservice.com',
-    icon: EnvelopeIcon
-  },
-  {
-    title: 'Teléfono',
-    description: '+543516615020 / +543516184316',
-    icon: PhoneIcon
-  },
-  {
-    title: 'Dirección',
-    description: 'Martín de Jauregui N° 1795. Córdoba. Argentina.',
-    icon: MapPinIcon
-  },
-  {
-    title: 'Horario',
-    description: 'Lunes a Viernes de 9 a 18 hs.',
-    icon: ClockIcon
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    const subject = `Consulta de ${formData.name}${formData.company ? ` - ${formData.company}` : ''}`
+    const body = `Nombre: ${formData.name}
+Email: ${formData.email}
+${formData.phone ? `Teléfono: ${formData.phone}` : ''}
+${formData.company ? `Empresa: ${formData.company}` : ''}
+
+Mensaje:
+${formData.message}`
+
+    const mailtoLink = `mailto:comercial@abaxhealthservice.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    window.location.href = mailtoLink
   }
-]
 
-const faqs = [
-  {
-    question: '¿Cómo puedo solicitar una consulta?',
-    answer: 'Puedes contactarnos a través de nuestro formulario, por email o teléfono. Nuestro equipo te responderá en un plazo máximo de 24 horas hábiles.'
-  },
-  {
-    question: '¿Qué servicios ofrecen?',
-    answer: 'Ofrecemos una amplia gama de servicios incluyendo auditoría de prestaciones, outsourcing profesional, suministro de insumos, consultoría en gestión, capacitación y desarrollo tecnológico.'
-  },
-  {
-    question: '¿Trabajan con instituciones internacionales?',
-    answer: 'Sí, tenemos experiencia trabajando con instituciones de salud de diferentes países. Nuestras soluciones son adaptables a diferentes contextos y regulaciones.'
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    })
   }
-]
 
-export default function Contacto() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-platinum pt-20">
       {/* Hero Section */}
-      <section className="relative py-20 bg-blue-600">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-700 to-blue-600" />
+      <section className="relative py-20 bg-gradient-to-br from-baltic-blue to-glaucous overflow-hidden">
+        <div className="absolute inset-0">
+          <HexagonPattern className="text-white opacity-10" />
+        </div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-block bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium mb-4"
-            >
+          <BlurFade delay={0.1}>
+            <div className="inline-block bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
               Contacto
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
-            >
-              Estamos aquí para ayudarte
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl text-white/90 max-w-3xl mx-auto"
-            >
-              Contáctanos para conocer cómo podemos transformar la gestión de tu institución de salud.
-            </motion.p>
-          </div>
+            </div>
+          </BlurFade>
+          <BlurFade delay={0.2}>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Hablemos de tu Proyecto
+            </h1>
+          </BlurFade>
+          <BlurFade delay={0.3}>
+            <p className="text-xl text-white/90 max-w-3xl">
+              Estamos listos para ayudarte a optimizar la gestión de tu organización de salud.
+            </p>
+          </BlurFade>
         </div>
       </section>
 
-      {/* Contact Info Section */}
-      <section className="py-20 bg-white">
+      {/* Contact Form & Info */}
+      <section className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {contactInfo.map((info, index) => (
-              <motion.div
-                key={info.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-8 shadow-lg border border-gray-100"
-              >
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                  <info.icon className="w-6 h-6 text-blue-600" />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Contact Info */}
+            <div className="lg:col-span-1 space-y-6">
+              <BlurFade delay={0.1} inView>
+                <div className="bg-white rounded-xl p-6 border border-alice-blue">
+                  <div className="w-12 h-12 bg-alice-blue rounded-lg flex items-center justify-center mb-4">
+                    <EnvelopeIcon className="w-6 h-6 text-baltic-blue" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Email</h3>
+                  <p className="text-gray-600 text-sm mb-1">comercial@abaxhealthservice.com</p>
+                  <p className="text-gray-600 text-sm">abaxhealthservice@gmail.com</p>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{info.title}</h3>
-                <p className="text-gray-600">{info.description}</p>
-              </motion.div>
-            ))}
+              </BlurFade>
+
+              <BlurFade delay={0.2} inView>
+                <div className="bg-white rounded-xl p-6 border border-alice-blue">
+                  <div className="w-12 h-12 bg-alice-blue rounded-lg flex items-center justify-center mb-4">
+                    <PhoneIcon className="w-6 h-6 text-baltic-blue" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Teléfono</h3>
+                  <p className="text-gray-600 text-sm">(351) 661 5020</p>
+                  <p className="text-gray-600 text-sm">(351) 618 4316</p>
+                </div>
+              </BlurFade>
+
+              <BlurFade delay={0.3} inView>
+                <div className="bg-white rounded-xl p-6 border border-alice-blue">
+                  <div className="w-12 h-12 bg-alice-blue rounded-lg flex items-center justify-center mb-4">
+                    <MapPinIcon className="w-6 h-6 text-baltic-blue" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Ubicación</h3>
+                  <p className="text-gray-600 text-sm">Córdoba, Argentina</p>
+                </div>
+              </BlurFade>
+            </div>
+
+            {/* Contact Form */}
+            <div className="lg:col-span-2">
+              <BlurFade delay={0.2} inView>
+                <div className="bg-white rounded-xl p-8 border border-alice-blue">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Envianos tu Consulta</h2>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label htmlFor="name" className="label">
+                          Nombre completo *
+                        </label>
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          required
+                          value={formData.name}
+                          onChange={handleChange}
+                          className="input-field"
+                          placeholder="Tu nombre"
+                        />
+                      </div>
+
+                      <div>
+                        <label htmlFor="email" className="label">
+                          Email *
+                        </label>
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          required
+                          value={formData.email}
+                          onChange={handleChange}
+                          className="input-field"
+                          placeholder="tu@email.com"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label htmlFor="phone" className="label">
+                          Teléfono
+                        </label>
+                        <input
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          className="input-field"
+                          placeholder="+54 11 1234-5678"
+                        />
+                      </div>
+
+                      <div>
+                        <label htmlFor="company" className="label">
+                          Empresa / Institución
+                        </label>
+                        <input
+                          type="text"
+                          id="company"
+                          name="company"
+                          value={formData.company}
+                          onChange={handleChange}
+                          className="input-field"
+                          placeholder="Nombre de tu empresa"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label htmlFor="message" className="label">
+                        Mensaje *
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        required
+                        rows={6}
+                        value={formData.message}
+                        onChange={handleChange}
+                        className="input-field resize-none"
+                        placeholder="Contanos sobre tu proyecto o consulta..."
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="btn-primary w-full md:w-auto"
+                    >
+                      Enviar Mensaje
+                    </button>
+                  </form>
+                </div>
+              </BlurFade>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium mb-4"
-            >
-              Preguntas Frecuentes
-            </motion.div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">¿Tienes alguna duda?</h2>
-            <p className="text-xl text-gray-600">Resolvemos tus preguntas más comunes</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={faq.question}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-8 shadow-lg border border-gray-100"
-              >
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">{faq.question}</h3>
-                <p className="text-gray-600">{faq.answer}</p>
-              </motion.div>
-            ))}
-          </div>
+      {/* Additional Info */}
+      <section className="py-20 bg-alice-blue/30 relative">
+        <div className="absolute inset-0 opacity-5">
+          <HexagonPattern className="text-baltic-blue" />
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-3xl font-bold text-white mb-6"
-            >
-              ¿Listo para transformar tu gestión?
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-xl text-white/90 mb-8 max-w-3xl mx-auto"
-            >
-              Únete a las instituciones que ya están optimizando sus procesos con ABAX.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-col sm:flex-row justify-center gap-4"
-            >
-              <Link
-                href="/contacto"
-                className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-              >
-                Contactar Ahora
-                <ArrowRightIcon className="w-5 h-5 ml-2" />
-              </Link>
-              <Link
-                href="/servicios"
-                className="inline-flex items-center justify-center bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-400 transition-colors"
-              >
-                Ver Servicios
-                <ArrowRightIcon className="w-5 h-5 ml-2" />
-              </Link>
-            </motion.div>
-          </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <BlurFade delay={0.1} inView>
+            <div className="text-center">
+              <div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                  Gestión Integral en Salud y Análisis de Datos
+                </h3>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                  Nuestro equipo de profesionales está listo para brindarte soluciones personalizadas que se adapten a las necesidades específicas de tu organización.
+                </p>
+                <p className="text-gray-600 mt-4">Córdoba, Argentina</p>
+              </div>
+            </div>
+          </BlurFade>
         </div>
       </section>
     </div>
   )
-} 
+}

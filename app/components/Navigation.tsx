@@ -36,16 +36,16 @@ export default function Navigation() {
   }
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-white shadow-sm">
+    <header className="fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b border-alice-blue">
       <nav className="flex items-center justify-between p-4 lg:px-8 h-16" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <Image
-              src="/logo.svg"
-              alt="ABAX Logo"
-              width={120}
-              height={40}
-              className="h-8 w-auto"
+              src="/assets/logo-abax.png"
+              alt="ABAX Health Service"
+              width={140}
+              height={50}
+              className="h-10 w-auto"
             />
           </Link>
         </div>
@@ -66,8 +66,8 @@ export default function Navigation() {
               href={item.href}
               className={`text-sm font-semibold leading-6 transition-colors ${
                 pathname === item.href
-                  ? 'text-blue-600'
-                  : 'text-gray-900 hover:text-blue-600'
+                  ? 'text-baltic-blue'
+                  : 'text-gray-900 hover:text-baltic-blue'
               }`}
             >
               {item.name}
@@ -77,7 +77,7 @@ export default function Navigation() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
             href="/contacto"
-            className="text-sm font-semibold leading-6 text-white bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-500 transition-colors"
+            className="text-sm font-semibold leading-6 text-white bg-baltic-blue px-4 py-2 rounded-lg hover:bg-baltic-blue-2 transition-colors"
           >
             Contactar
           </Link>
@@ -90,11 +90,11 @@ export default function Navigation() {
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5">
                 <Image
-                  src="/logo.svg"
-                  alt="ABAX Logo"
-                  width={120}
-                  height={40}
-                  className="h-8 w-auto"
+                  src="/assets/logo-abax.png"
+                  alt="ABAX Health Service"
+                  width={140}
+                  height={50}
+                  className="h-10 w-auto"
                 />
               </Link>
               <button

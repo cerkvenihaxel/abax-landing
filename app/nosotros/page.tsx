@@ -1,286 +1,194 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import Image from 'next/image'
 import Link from 'next/link'
-import {
-  ArrowRightIcon,
-  ChartBarIcon,
-  HeartIcon,
-  ShieldCheckIcon,
-  LightBulbIcon
-} from '@heroicons/react/24/outline'
+import { ArrowRightIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
+import BlurFade from '../components/magicui/blur-fade'
+import AnimatedGridPattern from '../components/magicui/animated-grid-pattern'
+import HexagonPattern from '../components/HexagonPattern'
 
+const timeline = [
+  {
+    year: '2013',
+    title: 'Fundación de ABAX',
+    description: 'Inicio de operaciones con foco en auditoría médica para empresas financiadoras de salud.',
+  },
+  {
+    year: '2015',
+    title: 'Expansión de Servicios',
+    description: 'Incorporación de servicios de outsourcing médico quirúrgico y consultoría en gestión.',
+  },
+  {
+    year: '2018',
+    title: 'Alianzas Estratégicas',
+    description: 'Establecimiento de partnerships con laboratorios y prestadores médicos líderes.',
+  },
+  {
+    year: '2020',
+    title: 'Transformación Digital',
+    description: 'Implementación de soluciones de Data Analytics y Business Intelligence.',
+  },
+  {
+    year: '2024',
+    title: 'Liderazgo en el Sector',
+    description: 'Más de 100 instituciones atendidas y reconocimiento como referentes en consultoría de salud.',
+  },
+]
 
 const values = [
   {
-    title: 'Transparencia',
-    description: 'Actuamos con honestidad y evidencias verificables. Informes claros y trazables, comunicación abierta con clientes y proveedores.',
-    icon: ShieldCheckIcon
+    title: 'Experiencia Comprobada',
+    description: 'Experiencia comprobada en el sector salud.',
   },
   {
-    title: 'Innovación',
-    description: 'Buscamos y aplicamos soluciones creativas que generen valor. Uso de BI e IA para detectar desvíos y oportunidades.',
-    icon: LightBulbIcon
+    title: 'Equipo Interdisciplinario',
+    description: 'Equipo interdisciplinario con enfoque técnico y estratégico.',
   },
   {
-    title: 'Compromiso',
-    description: 'Toda decisión debe favorecer la calidad y seguridad del cuidado. Evaluamos el impacto clínico de nuestras recomendaciones.',
-    icon: HeartIcon
-  }
+    title: 'Soporte en Tiempo Real',
+    description: 'Soporte en tiempo real para decisiones críticas.',
+  },
+  {
+    title: 'Análisis Predictivo',
+    description: 'Herramientas de análisis predictivo para la mejora continua.',
+  },
+  {
+    title: 'Compromiso Ético',
+    description: 'Compromiso con la ética, la transparencia y la eficiencia.',
+  },
 ]
 
-const team = [
-  {
-    name: 'Dr. Juan Pérez',
-    role: 'Director Médico',
-    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop',
-    description: 'Especialista en gestión hospitalaria con más de 15 años de experiencia.'
-  },
-  {
-    name: 'Dra. María García',
-    role: 'Directora de Operaciones',
-    image: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop',
-    description: 'Experta en optimización de procesos y gestión de calidad.'
-  },
-  {
-    name: 'Lic. Carlos Rodríguez',
-    role: 'Director de Innovación',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
-    description: 'Especialista en transformación digital y nuevas tecnologías.'
-  }
-]
-
-const achievements = [
-  {
-    title: 'Años de Experiencia',
-    value: '+10',
-    description: 'Trayectoria en el sector de la salud',
-    icon: ChartBarIcon
-  }
-]
-
-export default function AboutUs() {
+export default function NosotrosPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-platinum pt-20">
       {/* Hero Section */}
-      <section className="relative py-20 bg-blue-600">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-700 to-blue-600" />
+      <section className="relative py-20 bg-gradient-to-br from-baltic-blue to-glaucous overflow-hidden">
+        <div className="absolute inset-0">
+          <HexagonPattern className="text-white opacity-10" />
+        </div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-block bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium mb-4"
-            >
-              Nuestra Historia
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
-            >
-              Transformando la Gestión de la Salud
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl text-white/90 max-w-3xl mx-auto"
-            >
-              ABAX Health Service nace del compromiso por transformar la gestión de las organizaciones de salud con una mirada experta, ética y eficiente.
-            </motion.p>
-          </div>
+          <BlurFade delay={0.1}>
+            <div className="inline-block bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
+              Sobre Nosotros
+            </div>
+          </BlurFade>
+          <BlurFade delay={0.2}>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              ABAX Health Consulting
+            </h1>
+          </BlurFade>
+          <BlurFade delay={0.3}>
+            <p className="text-xl text-white/90 max-w-3xl">
+              Más de 10 años facilitando el crecimiento y la gestión de organizaciones de salud en Argentina.
+            </p>
+          </BlurFade>
         </div>
       </section>
 
-      {/* Historia Section */}
+      {/* Mission & Vision */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Nuestra Historia</h2>
-              <div className="space-y-4 text-gray-600">
-                <p>
-                  Aunque nuestra fundación formal fue en mayo de 2024, nuestro recorrido comenzó meses antes, en noviembre de 2023, cuando un grupo de profesionales con amplia trayectoria en el sector sanitario detectó una necesidad concreta: ofrecer soluciones integrales, confiables y técnicamente sólidas a financiadores y prestadores de salud, en un contexto cada vez más exigente y cambiante.
-                </p>
-                <p>
-                  Desde nuestros inicios, nos propusimos construir una alternativa diferente, basada en equipos humanos altamente capacitados, con experiencia real en campo y una fuerte vocación por el trabajo bien hecho. Creemos que la gestión idónea y la transparencia no son opcionales, sino pilares para mejorar los sistemas de salud.
-                </p>
-                <p>
-                  Hoy, en pleno proceso de expansión, consolidamos alianzas estratégicas con empresas afines que comparten nuestra visión, generando vínculos simbióticos que potencian tanto nuestro crecimiento como el de nuestros socios.
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <BlurFade delay={0.1} inView>
+              <div className="bg-alice-blue/30 rounded-xl p-8 border border-alice-blue">
+                <h2 className="text-3xl font-bold text-baltic-blue mb-4">Nuestra Misión</h2>
+                <p className="text-gray-700 leading-relaxed">
+                  Facilitar el crecimiento y la gestión de las organizaciones de salud mediante servicios especializados en auditoría integral, outsourcing médico quirúrgico y consultoría, aportando valor para mejorar sustancialmente la gestión de recursos en empresas financiadoras de salud.
                 </p>
               </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="relative h-[400px] rounded-xl overflow-hidden shadow-xl"
-            >
-              <Image
-                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop"
-                alt="Equipo ABAX"
-                fill
-                className="object-cover"
-              />
-            </motion.div>
+            </BlurFade>
+
+            <BlurFade delay={0.2} inView>
+              <div className="bg-alice-blue/30 rounded-xl p-8 border border-alice-blue">
+                <h2 className="text-3xl font-bold text-baltic-blue mb-4">Nuestra Visión</h2>
+                <p className="text-gray-700 leading-relaxed">
+                  Ser la empresa de consultoría en salud de referencia en Argentina, reconocida por nuestra excelencia, innovación y compromiso con la optimización de recursos y la calidad en la atención médica.
+                </p>
+              </div>
+            </BlurFade>
           </div>
         </div>
       </section>
 
-      {/* Achievements Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {achievements.map((achievement, index) => (
-              <motion.div
-                key={achievement.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-8 shadow-lg text-center"
-              >
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-6">
-                  <achievement.icon className="w-6 h-6 text-blue-600" />
+      {/* Timeline */}
+      <section className="py-20 bg-alice-blue/20 relative">
+        <div className="absolute inset-0">
+          <AnimatedGridPattern className="opacity-30 text-baltic-blue" />
+        </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <BlurFade delay={0.1} inView>
+            <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+              Nuestra Trayectoria
+            </h2>
+          </BlurFade>
+
+          <div className="space-y-8">
+            {timeline.map((item, idx) => (
+              <BlurFade key={idx} delay={0.1 + idx * 0.1} inView>
+                <div className="flex gap-6 items-start">
+                  <div className="flex-shrink-0 w-24 text-right">
+                    <span className="text-2xl font-bold text-baltic-blue">{item.year}</span>
+                  </div>
+                  <div className="flex-shrink-0 w-4 h-4 bg-baltic-blue rounded-full mt-2"></div>
+                  <div className="flex-1 bg-white rounded-xl p-6 border border-alice-blue">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
+                    <p className="text-gray-600">{item.description}</p>
+                  </div>
                 </div>
-                <div className="text-4xl font-bold text-blue-600 mb-2">{achievement.value}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{achievement.title}</h3>
-                <p className="text-gray-600">{achievement.description}</p>
-              </motion.div>
+              </BlurFade>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Valores Section */}
+      {/* Values */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium mb-4"
-            >
-              Nuestros Valores
-            </motion.div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Lo que nos define</h2>
-            <p className="text-xl text-gray-600">Construimos nuestro futuro sobre una base sólida de valores</p>
-          </div>
+          <BlurFade delay={0.1} inView>
+            <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+              Nuestro Valor Agregado
+            </h2>
+          </BlurFade>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-8 shadow-lg border border-gray-100"
-              >
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                  <value.icon className="w-6 h-6 text-blue-600" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {values.map((value, idx) => (
+              <BlurFade key={idx} delay={0.2 + idx * 0.1} inView>
+                <div className="bg-alice-blue/30 rounded-xl p-6 border border-alice-blue text-center">
+                  <div className="w-12 h-12 bg-baltic-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircleIcon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-baltic-blue mb-2">{value.title}</h3>
+                  <p className="text-gray-600 text-sm">{value.description}</p>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium mb-4"
-            >
-              Nuestro Equipo
-            </motion.div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Profesionales Especializados</h2>
-            <p className="text-xl text-gray-600">Equipo interdisciplinario con vasta experiencia en el sector de la salud</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-8 shadow-lg text-center"
-              >
-                <div className="relative w-32 h-32 rounded-full overflow-hidden mx-auto mb-6">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
-                <p className="text-blue-600 mb-4">{member.role}</p>
-                <p className="text-gray-600">{member.description}</p>
-              </motion.div>
+              </BlurFade>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-3xl font-bold text-white mb-6"
-            >
-              ¿Listo para transformar tu gestión?
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-xl text-white/90 mb-8 max-w-3xl mx-auto"
-            >
-              Descubre cómo podemos ayudarte a optimizar tu organización de salud.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-col sm:flex-row justify-center gap-4"
-            >
-              <Link
-                href="/contacto"
-                className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-              >
-                Contactar Ahora
-                <ArrowRightIcon className="w-5 h-5 ml-2" />
-              </Link>
-              <Link
-                href="/servicios"
-                className="inline-flex items-center justify-center bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-400 transition-colors"
-              >
-                Ver Servicios
-                <ArrowRightIcon className="w-5 h-5 ml-2" />
-              </Link>
-            </motion.div>
-          </div>
+      <section className="py-20 bg-gradient-to-br from-baltic-blue to-glaucous relative overflow-hidden">
+        <div className="absolute inset-0">
+          <HexagonPattern className="text-white opacity-10" />
+        </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <BlurFade delay={0.1} inView>
+            <h2 className="text-3xl font-bold text-white mb-6">
+              ¿Querés conocer más sobre ABAX?
+            </h2>
+          </BlurFade>
+          <BlurFade delay={0.2} inView>
+            <p className="text-xl text-white/90 mb-8">
+              Contactanos para una reunión informativa
+            </p>
+          </BlurFade>
+          <BlurFade delay={0.3} inView>
+            <Link href="/contacto" className="btn-primary bg-white text-baltic-blue hover:bg-alice-blue group">
+              Contactar
+              <ArrowRightIcon className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </BlurFade>
         </div>
       </section>
     </div>
   )
-} 
+}

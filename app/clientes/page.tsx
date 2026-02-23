@@ -1,263 +1,176 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { 
-  BuildingOfficeIcon,
-  UserGroupIcon,
-  StarIcon,
-  ChartBarIcon,
-  ArrowRightIcon,
-  ShieldCheckIcon
-} from '@heroicons/react/24/outline'
+import { ArrowRightIcon } from '@heroicons/react/24/outline'
+import BlurFade from '../components/magicui/blur-fade'
+import OrbitingCircles from '../components/magicui/orbiting-circles'
+import HexagonPattern from '../components/HexagonPattern'
+
+const clients = [
+  { name: 'OSDE', category: 'Obra Social' },
+  { name: 'Swiss Medical', category: 'Prepaga' },
+  { name: 'Galeno', category: 'Prepaga' },
+  { name: 'IOMA', category: 'Obra Social' },
+  { name: 'PAMI', category: 'Obra Social' },
+  { name: 'Medifé', category: 'Prepaga' },
+]
 
 const testimonials = [
   {
-    name: 'Dr. Juan Pérez',
-    role: 'Director Médico',
-    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop',
-    quote: 'ABAX ha transformado nuestra gestión hospitalaria con soluciones innovadoras y eficientes.',
-    rating: 5
+    quote: 'ABAX nos ayudó a optimizar nuestros procesos de auditoría, reduciendo costos operativos en un 30%.',
+    author: 'Director Médico',
+    company: 'Empresa Financiadora de Salud',
   },
   {
-    name: 'Dra. María García',
-    role: 'Gerente de Operaciones',
-    image: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop',
-    quote: 'Su enfoque en la calidad y la eficiencia ha mejorado significativamente nuestros procesos.',
-    rating: 5
+    quote: 'El servicio de outsourcing médico quirúrgico superó nuestras expectativas en calidad y profesionalismo.',
+    author: 'Gerente de Operaciones',
+    company: 'Clínica Privada',
   },
-  {
-    name: 'Lic. Carlos Rodríguez',
-    role: 'Director Administrativo',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
-    quote: 'La implementación de sus soluciones ha optimizado nuestros recursos y mejorado la atención al paciente.',
-    rating: 5
-  }
 ]
 
-const stats = [
-  {
-    title: 'Instituciones Atendidas',
-    value: '50+',
-    description: 'Organizaciones de salud que confían en nosotros',
-    icon: BuildingOfficeIcon
-  },
-  {
-    title: 'Profesionales Satisfechos',
-    value: '1000+',
-    description: 'Usuarios que utilizan nuestras soluciones',
-    icon: UserGroupIcon
-  },
-  {
-    title: 'Años de Experiencia',
-    value: '10+',
-    description: 'Trayectoria en el sector de la salud',
-    icon: ChartBarIcon
-  }
-]
-
-const services = [
-  {
-    title: 'Auditoría Médica',
-    description: 'Optimización de procesos y control de calidad en prestaciones médicas.',
-    icon: ShieldCheckIcon
-  },
-  {
-    title: 'Gestión Hospitalaria',
-    description: 'Mejora continua en la administración de recursos y procesos.',
-    icon: ChartBarIcon
-  },
-  {
-    title: 'Consultoría Especializada',
-    description: 'Asesoramiento experto para el desarrollo de instituciones de salud.',
-    icon: ShieldCheckIcon
-  }
-]
-
-export default function Clientes() {
+export default function ClientesPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-platinum pt-20">
       {/* Hero Section */}
-      <section className="relative py-20 bg-blue-600">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-700 to-blue-600" />
+      <section className="relative py-20 bg-gradient-to-br from-glaucous to-baltic-blue overflow-hidden">
+        <div className="absolute inset-0">
+          <HexagonPattern className="text-white opacity-10" />
+        </div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-block bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium mb-4"
-            >
+          <BlurFade delay={0.1}>
+            <div className="inline-block bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
               Nuestros Clientes
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
-            >
-              Instituciones que Confían en Nosotros
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl text-white/90 max-w-3xl mx-auto"
-            >
-              Trabajamos con organizaciones líderes para transformar la gestión de la salud.
-            </motion.p>
+            </div>
+          </BlurFade>
+          <BlurFade delay={0.2}>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Empresas que Confían en ABAX
+            </h1>
+          </BlurFade>
+          <BlurFade delay={0.3}>
+            <p className="text-xl text-white/90 max-w-3xl">
+              Trabajamos con las principales empresas financiadoras de salud y prestadores médicos de Argentina.
+            </p>
+          </BlurFade>
+        </div>
+      </section>
+
+      {/* Orbiting Clients Section */}
+      <section className="py-20 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <BlurFade delay={0.1} inView>
+            <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+              Red de Clientes
+            </h2>
+          </BlurFade>
+
+          <div className="relative h-[500px] flex items-center justify-center">
+            <BlurFade delay={0.2} inView>
+              <div className="relative w-32 h-32 bg-baltic-blue rounded-full flex items-center justify-center z-10">
+                <Image
+                  src="/assets/logo-abax.png"
+                  alt="ABAX"
+                  width={80}
+                  height={80}
+                  className="object-contain"
+                />
+              </div>
+            </BlurFade>
+
+            {clients.map((client, idx) => (
+              <OrbitingCircles
+                key={idx}
+                radius={180 + (idx % 2) * 40}
+                duration={20 + idx * 2}
+                delay={idx * 3}
+                reverse={idx % 2 === 0}
+              >
+                <div className="w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center border-2 border-alice-blue">
+                  <span className="text-xs font-semibold text-baltic-blue text-center px-2">
+                    {client.name}
+                  </span>
+                </div>
+              </OrbitingCircles>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-alice-blue/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-8 shadow-lg text-center border border-gray-100"
-              >
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-6">
-                  <stat.icon className="w-6 h-6 text-blue-600" />
-                </div>
-                <div className="text-4xl font-bold text-blue-600 mb-2">{stat.value}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{stat.title}</h3>
-                <p className="text-gray-600">{stat.description}</p>
-              </motion.div>
-            ))}
+            <BlurFade delay={0.1} inView>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-baltic-blue mb-2">100+</div>
+                <div className="text-gray-600">Instituciones atendidas</div>
+              </div>
+            </BlurFade>
+            <BlurFade delay={0.2} inView>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-baltic-blue mb-2">95%</div>
+                <div className="text-gray-600">Tasa de satisfacción</div>
+              </div>
+            </BlurFade>
+            <BlurFade delay={0.3} inView>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-baltic-blue mb-2">30%</div>
+                <div className="text-gray-600">Reducción de costos promedio</div>
+              </div>
+            </BlurFade>
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium mb-4"
-            >
-              Testimonios
-            </motion.div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Lo que Dicen Nuestros Clientes</h2>
-            <p className="text-xl text-gray-600">Experiencias de instituciones que han transformado su gestión con nosotros</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-8 shadow-lg border border-gray-100"
-              >
-                <div className="flex items-center mb-6">
-                  <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">{testimonial.name}</h3>
-                    <p className="text-blue-600">{testimonial.role}</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 mb-4">{testimonial.quote}</p>
-                <div className="flex">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <StarIcon key={i} className="w-5 h-5 text-yellow-400" />
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Servicios para Nuestros Clientes</h2>
-            <p className="text-xl text-gray-600">Soluciones especializadas para cada necesidad</p>
-          </div>
+          <BlurFade delay={0.1} inView>
+            <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+              Lo que Dicen Nuestros Clientes
+            </h2>
+          </BlurFade>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-8 shadow-lg border border-gray-100"
-              >
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                  <service.icon className="w-6 h-6 text-blue-600" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {testimonials.map((testimonial, idx) => (
+              <BlurFade key={idx} delay={0.2 + idx * 0.1} inView>
+                <div className="bg-alice-blue/30 rounded-xl p-8 border border-alice-blue">
+                  <p className="text-gray-700 mb-6 italic">"{testimonial.quote}"</p>
+                  <div>
+                    <p className="font-semibold text-baltic-blue">{testimonial.author}</p>
+                    <p className="text-sm text-gray-600">{testimonial.company}</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
-              </motion.div>
+              </BlurFade>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-3xl font-bold text-white mb-6"
-            >
-              ¿Listo para transformar tu gestión?
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-xl text-white/90 mb-8 max-w-3xl mx-auto"
-            >
-              Únete a las instituciones que ya están optimizando sus procesos con ABAX.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-col sm:flex-row justify-center gap-4"
-            >
-              <Link
-                href="/contacto"
-                className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-              >
-                Contactar Ahora
-                <ArrowRightIcon className="w-5 h-5 ml-2" />
-              </Link>
-              <Link
-                href="/servicios"
-                className="inline-flex items-center justify-center bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-400 transition-colors"
-              >
-                Ver Servicios
-                <ArrowRightIcon className="w-5 h-5 ml-2" />
-              </Link>
-            </motion.div>
-          </div>
+      <section className="py-20 bg-gradient-to-br from-baltic-blue to-glaucous relative overflow-hidden">
+        <Image
+          src="/assets/header-bottom.jpg"
+          alt=""
+          fill
+          className="object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-baltic-blue/80" />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <BlurFade delay={0.1} inView>
+            <h2 className="text-3xl font-bold text-white mb-6">
+              ¿Querés ser parte de nuestra red de clientes?
+            </h2>
+          </BlurFade>
+          <BlurFade delay={0.2} inView>
+            <Link href="/contacto" className="btn-primary bg-white text-baltic-blue hover:bg-alice-blue group">
+              Contactanos
+              <ArrowRightIcon className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </BlurFade>
         </div>
       </section>
     </div>
   )
-} 
+}

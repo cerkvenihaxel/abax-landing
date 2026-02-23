@@ -1,282 +1,256 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 import {
   ClipboardDocumentCheckIcon,
   UserGroupIcon,
   ChartBarIcon,
   AcademicCapIcon,
-  TruckIcon,
   ComputerDesktopIcon,
-  ArrowRightIcon
+  ArrowRightIcon,
+  BeakerIcon,
 } from '@heroicons/react/24/outline'
-
+import { BentoGrid, BentoCard } from '../components/magicui/bento-grid'
+import AnimatedGridPattern from '../components/magicui/animated-grid-pattern'
+import BlurFade from '../components/magicui/blur-fade'
+import HexagonPattern from '../components/HexagonPattern'
 
 const services = [
   {
-    title: 'Auditoría Integral en Empresas financiadoras de Salud',
-    description: 'Mediante el análisis de la información de consumo brindada por la Institución y mediante usos de herramientas de Data Analytic y Business Intelligence pueden evaluarse desvíos para planificación de las siguientes clases de auditoría:',
+    name: 'Auditoría Integral',
+    description: 'Revisión técnica, médica y administrativa de procesos para empresas financiadoras de salud.',
     icon: ClipboardDocumentCheckIcon,
-    features: [
-      'Facturación médica y administrativa',
-      'Especializada en prótesis y ortesis (servicio de consultoría)',
-      'Medicación ambulatoria',
-      'Especializada en medicación ambulatoria de alto costo (servicio de consultoría)'
-    ]
+    className: 'col-span-3 lg:col-span-2',
+    background: (
+      <div className="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop" alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-alice-blue/30 to-transparent" />
+        <HexagonPattern className="absolute inset-0 text-baltic-blue opacity-10" />
+      </div>
+    ),
   },
   {
-    title: 'Outsourcing Profesional',
-    description: 'Gestión integral de recursos humanos especializados para instituciones de salud.',
-    icon: UserGroupIcon,
-    features: [
-      'Selección de personal calificado',
-      'Capacitación continua',
-      'Gestión de nómina',
-      'Cumplimiento normativo'
-    ]
+    name: 'Auditoría de Materiales Protésicos',
+    description: 'Control de desvíos y soporte en tiempo real para decisiones de autorización.',
+    icon: BeakerIcon,
+    className: 'col-span-3 lg:col-span-1',
+    background: (
+      <div className="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&h=600&fit=crop" alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-glaucous/30 to-transparent" />
+        <AnimatedGridPattern className="absolute inset-0 opacity-30" />
+      </div>
+    ),
   },
   {
-    title: 'Suministro de Insumos',
-    description: 'Provisión de materiales médicos y equipamiento de alta calidad para instituciones de salud.',
-    icon: TruckIcon,
-    features: [
-      'Catálogo completo de insumos',
-      'Entrega oportuna',
-      'Control de inventario',
-      'Soporte técnico'
-    ]
-  },
-  {
-    title: 'Outsourcing de profesionales médicos quirúrgicos',
-    description: 'Ofrecimiento a entidades financiadoras de salud de posibilidad de resolución de patologías quirúrgicas en varias especialidades médicas con profesionales de alta calificación, ponderando valores competitivos de mercado. Soluciones quirúrgicas en las siguientes especialidades:',
-    icon: UserGroupIcon,
-    features: [
-      'Ginecología',
-      'Traumatología',
-      'Cirugía General',
-      'Cirugía Cardiovascular',
-      'Cirugía Vascular Periférica'
-    ]
-  }
-]
-
-const additionalServices = [
-  {
-    title: 'Consultoría en Gestión',
-    description: 'Asesoramiento especializado para optimizar la administración de instituciones de salud.',
+    name: 'Análisis de Datos',
+    description: 'Detección de patrones y oportunidades de mejora mediante Big Data.',
     icon: ChartBarIcon,
-    features: [
-      'Análisis organizacional',
-      'Planificación estratégica',
-      'Optimización de procesos',
-      'Mejora continua'
-    ]
+    className: 'col-span-3 lg:col-span-1',
+    background: (
+      <div className="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop" alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-platinum/30 to-transparent" />
+      </div>
+    ),
   },
   {
-    title: 'Capacitación',
-    description: 'Programas de formación para profesionales de la salud y personal administrativo.',
+    name: 'Consultoría Estratégica',
+    description: 'Acompañamiento en la toma de decisiones de alto impacto y planificación sanitaria.',
     icon: AcademicCapIcon,
-    features: [
-      'Cursos especializados',
-      'Talleres prácticos',
-      'Certificaciones',
-      'Seguimiento de aprendizaje'
-    ]
+    className: 'col-span-3 lg:col-span-2',
+    background: (
+      <div className="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop" alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-alice-blue/30 to-transparent" />
+        <HexagonPattern className="absolute inset-0 text-baltic-blue opacity-10" />
+      </div>
+    ),
   },
   {
-    title: 'Desarrollo Tecnológico',
-    description: 'Implementación de soluciones tecnológicas para la gestión eficiente de instituciones de salud.',
+    name: 'Outsourcing Médico Quirúrgico',
+    description: 'Gestión integral de recursos humanos especializados con selección, capacitación continua y cumplimiento normativo.',
+    icon: UserGroupIcon,
+    className: 'col-span-3 lg:col-span-1',
+    background: (
+      <div className="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&h=600&fit=crop" alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-glaucous/30 to-transparent" />
+      </div>
+    ),
+  },
+  {
+    name: 'Sistemas de Información',
+    description: 'Implementación de soluciones tecnológicas para gestión hospitalaria y análisis de datos.',
     icon: ComputerDesktopIcon,
-    features: [
-      'Sistemas de gestión',
-      'Automatización de procesos',
-      'Integración de plataformas',
-      'Soporte técnico'
-    ]
-  }
+    className: 'col-span-3 lg:col-span-2',
+    background: (
+      <div className="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=600&fit=crop" alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-platinum/30 to-transparent" />
+        <AnimatedGridPattern className="absolute inset-0 opacity-20" />
+      </div>
+    ),
+  },
 ]
 
-export default function Services() {
+export default function ServiciosPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-platinum pt-20">
       {/* Hero Section */}
-      <section className="relative py-20 bg-blue-600">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-700 to-blue-600" />
+      <section className="relative py-20 bg-gradient-to-br from-baltic-blue to-baltic-blue-2 overflow-hidden">
+        <div className="absolute inset-0">
+          <HexagonPattern className="text-white opacity-10" />
+        </div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-block bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium mb-4"
-            >
+          <BlurFade delay={0.1}>
+            <div className="inline-block bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
               Nuestros Servicios
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
-            >
-              Soluciones Integrales para la Salud
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl text-white/90 max-w-3xl mx-auto"
-            >
-              Ofrecemos servicios especializados para optimizar la gestión y operación de instituciones de salud.
-            </motion.p>
-          </div>
+            </div>
+          </BlurFade>
+          <BlurFade delay={0.2}>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Soluciones Integrales para el Sector Salud
+            </h1>
+          </BlurFade>
+          <BlurFade delay={0.3}>
+            <p className="text-xl text-white/90 max-w-3xl">
+              Ofrecemos servicios especializados en auditoría, consultoría y gestión para empresas financiadoras de salud y prestadores médicos.
+            </p>
+          </BlurFade>
         </div>
       </section>
 
-      {/* Main Services */}
+      {/* Services Bento Grid */}
+      <section className="py-20 relative">
+        <div className="absolute inset-0 opacity-5">
+          <AnimatedGridPattern />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <BlurFade delay={0.2} inView>
+            <BentoGrid>
+              {services.map((service, idx) => (
+                <BentoCard
+                  key={idx}
+                  {...service}
+                  cta="Contactar"
+                  href="/contacto"
+                />
+              ))}
+            </BentoGrid>
+          </BlurFade>
+        </div>
+      </section>
+
+      {/* Detailed Services Section */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium mb-4"
-            >
-              Servicios Principales
-            </motion.div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Nuestras Soluciones</h2>
-            <p className="text-xl text-gray-600">Servicios diseñados para optimizar la gestión de la salud</p>
-          </div>
+          <BlurFade delay={0.1} inView>
+            <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+              Servicios Detallados
+            </h2>
+          </BlurFade>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-8 shadow-lg border border-gray-100"
-              >
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                  <service.icon className="w-6 h-6 text-blue-600" />
+          <div className="space-y-12">
+            <BlurFade delay={0.2} inView>
+              <div className="bg-alice-blue/30 rounded-xl p-8 border border-alice-blue">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-baltic-blue rounded-lg flex items-center justify-center flex-shrink-0">
+                    <ClipboardDocumentCheckIcon className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                      Auditoría Integral en Empresas Financiadoras de Salud
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      Mediante el análisis de la información de consumo brindada por la Institución y mediante usos de herramientas de Data Analytics y Business Intelligence pueden evaluarse desvíos para planificación de las siguientes clases de auditoría:
+                    </p>
+                    <ul className="space-y-2">
+                      <li className="flex items-start text-gray-600">
+                        <span className="w-2 h-2 bg-baltic-blue rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                        Facturación médica y administrativa
+                      </li>
+                      <li className="flex items-start text-gray-600">
+                        <span className="w-2 h-2 bg-baltic-blue rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                        Especializada en prótesis y ortesis (servicio de consultoría)
+                      </li>
+                      <li className="flex items-start text-gray-600">
+                        <span className="w-2 h-2 bg-baltic-blue rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                        Medicación ambulatoria
+                      </li>
+                      <li className="flex items-start text-gray-600">
+                        <span className="w-2 h-2 bg-baltic-blue rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                        Especializada en medicación ambulatoria de alto costo (servicio de consultoría)
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-gray-600 mb-6">{service.description}</p>
-                <ul className="space-y-3">
-                  {service.features.map((feature, featureIndex) => (
-                    <motion.li
-                      key={featureIndex}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.2 + featureIndex * 0.1 }}
-                      className="flex items-center text-gray-600"
-                    >
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3" />
-                      {feature}
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+              </div>
+            </BlurFade>
 
-      {/* Additional Services */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-block bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-medium mb-4"
-            >
-              Servicios Adicionales
-            </motion.div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Más Soluciones</h2>
-            <p className="text-xl text-gray-600">Complementamos nuestros servicios principales con soluciones especializadas</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {additionalServices.map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-8 shadow-lg border border-gray-100"
-              >
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                  <service.icon className="w-6 h-6 text-blue-600" />
+            <BlurFade delay={0.3} inView>
+              <div className="bg-alice-blue/30 rounded-xl p-8 border border-alice-blue">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-baltic-blue rounded-lg flex items-center justify-center flex-shrink-0">
+                    <UserGroupIcon className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                      Outsourcing Médico Quirúrgico
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      Gestión integral de recursos humanos especializados para instituciones de salud, garantizando profesionales calificados y cumplimiento normativo.
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-gray-600 mb-6">{service.description}</p>
-                <ul className="space-y-3">
-                  {service.features.map((feature, featureIndex) => (
-                    <motion.li
-                      key={featureIndex}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.2 + featureIndex * 0.1 }}
-                      className="flex items-center text-gray-600"
-                    >
-                      <span className="w-2 h-2 bg-blue-600 rounded-full mr-3" />
-                      {feature}
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+              </div>
+            </BlurFade>
+
+            <BlurFade delay={0.4} inView>
+              <div className="bg-alice-blue/30 rounded-xl p-8 border border-alice-blue">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-baltic-blue rounded-lg flex items-center justify-center flex-shrink-0">
+                    <ChartBarIcon className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                      Consultoría en Gestión Hospitalaria
+                    </h3>
+                    <p className="text-gray-600">
+                      Optimización de procesos, análisis de costos y mejora continua en la gestión de recursos para instituciones de salud.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </BlurFade>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-3xl font-bold text-white mb-6"
-            >
-              ¿Listo para optimizar tu gestión?
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-xl text-white/90 mb-8 max-w-3xl mx-auto"
-            >
-              Descubre cómo nuestros servicios pueden transformar tu organización de salud.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-col sm:flex-row justify-center gap-4"
-            >
-              <Link
-                href="/contacto"
-                className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-              >
-                Contactar Ahora
-                <ArrowRightIcon className="w-5 h-5 ml-2" />
-              </Link>
-              <Link
-                href="/nosotros"
-                className="inline-flex items-center justify-center bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-400 transition-colors"
-              >
-                Conocer Más
-                <ArrowRightIcon className="w-5 h-5 ml-2" />
-              </Link>
-            </motion.div>
-          </div>
+      <section className="py-20 bg-gradient-to-br from-baltic-blue to-glaucous relative overflow-hidden">
+        <div className="absolute inset-0">
+          <HexagonPattern className="text-white opacity-10" />
+        </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <BlurFade delay={0.1} inView>
+            <h2 className="text-3xl font-bold text-white mb-6">
+              ¿Necesitás más información sobre nuestros servicios?
+            </h2>
+          </BlurFade>
+          <BlurFade delay={0.2} inView>
+            <p className="text-xl text-white/90 mb-8">
+              Contactanos para una consulta personalizada
+            </p>
+          </BlurFade>
+          <BlurFade delay={0.3} inView>
+            <Link href="/contacto" className="btn-primary bg-white text-baltic-blue hover:bg-alice-blue group">
+              Contactar ahora
+              <ArrowRightIcon className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </BlurFade>
         </div>
       </section>
     </div>
   )
-} 
+}

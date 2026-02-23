@@ -2,16 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255, 255, 255;
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 212 58% 36%;
+    --border: 211 43% 90%;
+    --input: 211 43% 90%;
+    --ring: 212 58% 36%;
+    --radius: 0.5rem;
+    
+    /* ABAX Color Palette */
+    --alice-blue: 211 43% 90%;
+    --glaucous: 213 35% 49%;
+    --baltic-blue: 212 58% 36%;
+    --platinum: 204 38% 97%;
+    --baltic-blue-2: 212 47% 39%;
+  }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-platinum text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
 @layer base {
@@ -26,11 +43,11 @@ body {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200 shadow-sm hover:shadow-md;
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-baltic-blue hover:bg-baltic-blue-2 transition-colors duration-200 shadow-sm hover:shadow-md;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-blue-600 text-base font-medium rounded-lg text-blue-600 bg-transparent hover:bg-blue-50 transition-colors duration-200;
+    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-baltic-blue text-base font-medium rounded-lg text-baltic-blue bg-transparent hover:bg-alice-blue transition-colors duration-200;
   }
 
   .section-title {
@@ -50,7 +67,7 @@ body {
   }
 
   .card-icon {
-    @apply w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6;
+    @apply w-12 h-12 bg-alice-blue rounded-lg flex items-center justify-center mb-6;
   }
 
   .card-content {
@@ -66,15 +83,15 @@ body {
   }
 
   .nav-link {
-    @apply text-gray-700 hover:text-blue-600 transition-colors duration-200;
+    @apply text-gray-700 hover:text-baltic-blue transition-colors duration-200;
   }
 
   .nav-link-active {
-    @apply text-blue-600 font-medium;
+    @apply text-baltic-blue font-medium;
   }
 
   .input-field {
-    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200;
+    @apply w-full px-4 py-3 border border-alice-blue rounded-lg focus:ring-2 focus:ring-baltic-blue focus:border-baltic-blue transition-colors duration-200;
   }
 
   .label {
@@ -94,8 +111,22 @@ body {
   }
 }
 
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(calc(var(--radius) * 1px)) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(calc(var(--radius) * 1px)) rotate(-360deg);
+  }
+}
+
 .animate-fade-in {
   animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-orbit {
+  animation: orbit calc(var(--duration) * 1s) linear infinite;
+  animation-delay: calc(var(--delay) * 1s);
 }
 
 /* Estilos para el scroll */
