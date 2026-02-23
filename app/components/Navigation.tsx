@@ -85,7 +85,11 @@ export default function Navigation() {
       </nav>
       {mobileMenuOpen && (
         <div className="lg:hidden">
-          <div className="fixed inset-0 bg-gray-900/80" aria-hidden="true" />
+          <div 
+            className="fixed inset-0 bg-gray-900/80 z-40" 
+            aria-hidden="true"
+            onClick={() => setMobileMenuOpen(false)}
+          />
           <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5">
@@ -99,7 +103,7 @@ export default function Navigation() {
               </Link>
               <button
                 type="button"
-                className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                className="-m-2.5 rounded-md p-2.5 text-gray-700 hover:bg-gray-100"
                 onClick={() => setMobileMenuOpen(false)}
                 aria-label="Cerrar menú"
               >
@@ -115,9 +119,10 @@ export default function Navigation() {
                       href={item.href}
                       className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 ${
                         pathname === item.href
-                          ? 'text-blue-600 bg-blue-50'
+                          ? 'text-baltic-blue bg-alice-blue'
                           : 'text-gray-900 hover:bg-gray-50'
                       }`}
+                      onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}
                     </Link>
@@ -126,7 +131,8 @@ export default function Navigation() {
                 <div className="py-6">
                   <Link
                     href="/contacto"
-                    className="block w-full text-center text-sm font-semibold leading-6 text-white bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-500 transition-colors"
+                    className="block w-full text-center text-sm font-semibold leading-6 text-white bg-baltic-blue px-4 py-2 rounded-lg hover:bg-baltic-blue-2 transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
                   >
                     Contactar
                   </Link>
