@@ -1,137 +1,80 @@
-'use client'
-
-import { usePathname } from 'next/navigation'
-
 export default function StructuredData() {
-  const pathname = usePathname()
-
-  const organizationData = {
+  const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": "HealthAndBeautyBusiness",
+    "@type": "MedicalBusiness",
     "name": "ABAX Health Service",
-    "alternateName": "ABAX Health Consulting",
-    "description": "Consultoría especializada en salud. Auditoría integral, outsourcing médico quirúrgico y gestión para empresas financiadoras de salud.",
-    "url": "https://abaxheathservice.com",
-    "logo": "https://abaxheathservice.com/logo.svg",
-    "image": "https://abaxheathservice.com/logo.svg",
-    "telephone": ["+543516615020", "+543516184316"],
-    "email": "comercial@abaxheathservice.com",
+    "description": "Auditoría médica integral, consultoría estratégica y análisis de datos para empresas de salud en Argentina",
+    "url": "https://abaxhealthservice.com",
+    "logo": "https://abaxhealthservice.com/assets/logo-abax.png",
+    "image": "https://abaxhealthservice.com/assets/header-top.jpg",
+    "telephone": ["+54-351-661-5020", "+54-351-618-4316"],
+    "email": "comercial@abaxhealthservice.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Martín de Jauregui N° 1795",
       "addressLocality": "Córdoba",
       "addressRegion": "Córdoba",
       "addressCountry": "AR"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -31.4201,
-      "longitude": -64.1888
-    },
-    "openingHours": "Mo-Fr 09:00-18:00",
-    "foundingDate": "2024",
-    "numberOfEmployees": "10-50",
     "areaServed": {
       "@type": "Country",
       "name": "Argentina"
     },
-    "serviceType": [
-      "Auditoría Integral en Salud",
-      "Consultoría Médica",
-      "Outsourcing Médico Quirúrgico",
-      "Gestión Hospitalaria",
-      "Consultoría en Salud"
-    ],
+    "foundingDate": "2013",
+    "slogan": "Optimizando la gestión de salud con excelencia",
     "knowsAbout": [
       "Auditoría Médica",
-      "Gestión Hospitalaria",
+      "Auditoría de Materiales Protésicos",
       "Consultoría en Salud",
+      "Análisis de Datos en Salud",
       "Outsourcing Médico",
-      "Cirugía",
-      "Ginecología",
-      "Traumatología",
-      "Cirugía General",
-      "Cirugía Cardiovascular",
-      "Cirugía Vascular"
-    ],
-    "sameAs": []
+      "Gestión Hospitalaria"
+    ]
   }
 
-  const websiteData = {
+  const servicesSchema = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "ABAX Health Consulting",
-    "alternateName": "ABAX Health Service",
-    "url": "https://abaxheathservice.com",
-    "description": "Consultoría especializada en salud. Auditoría integral, outsourcing médico quirúrgico y gestión para empresas financiadoras de salud.",
-    "inLanguage": "es-AR",
-    "publisher": {
-      "@type": "Organization",
-      "name": "ABAX Health Service",
-      "logo": "https://abaxheathservice.com/logo.svg"
-    }
-  }
-
-  const servicesData = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Consultoría en Salud y Auditoría Médica",
-    "description": "Servicios de consultoría especializada en salud, auditoría integral, outsourcing médico quirúrgico y gestión para empresas financiadoras de salud.",
-    "provider": {
-      "@type": "Organization",
-      "name": "ABAX Health Service",
-      "url": "https://abaxheathservice.com"
-    },
-    "areaServed": {
-      "@type": "Country",
-      "name": "Argentina"
-    },
-    "serviceType": [
-      "Auditoría Integral en Empresas financiadoras de Salud",
-      "Outsourcing de profesionales médicos quirúrgicos",
-      "Consultoría en Gestión Hospitalaria",
-      "Suministro de Insumos Médicos"
-    ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Servicios de Consultoría en Salud",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Auditoría Integral en Empresas financiadoras de Salud",
-            "description": "Análisis de información de consumo mediante herramientas de Data Analytics y Business Intelligence"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Outsourcing de profesionales médicos quirúrgicos",
-            "description": "Profesionales especializados en Ginecología, Traumatología, Cirugía General, Cardiovascular y Vascular Periférica"
-          }
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "Service",
+        "name": "Auditoría Médica Integral",
+        "description": "Revisión técnica, médica y administrativa de procesos para empresas financiadoras de salud",
+        "provider": {
+          "@type": "Organization",
+          "name": "ABAX Health Service"
         }
-      ]
-    }
+      },
+      {
+        "@type": "Service",
+        "name": "Auditoría de Materiales Protésicos",
+        "description": "Control de desvíos y soporte en tiempo real para decisiones de autorización",
+        "provider": {
+          "@type": "Organization",
+          "name": "ABAX Health Service"
+        }
+      },
+      {
+        "@type": "Service",
+        "name": "Consultoría Estratégica en Salud",
+        "description": "Acompañamiento en la toma de decisiones de alto impacto y planificación sanitaria",
+        "provider": {
+          "@type": "Organization",
+          "name": "ABAX Health Service"
+        }
+      }
+    ]
   }
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
       />
-      {pathname === '/servicios' && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesData) }}
-        />
-      )}
     </>
   )
 }
